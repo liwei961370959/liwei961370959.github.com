@@ -87,155 +87,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/26/who/" data-id="cj5klcptq0002dshan2nevbmx" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-444" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/26/444/" class="article-date">
-  <time datetime="2017-07-26T02:46:39.000Z" itemprop="datePublished">2017-07-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/26/444/">友盟授权微信登录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>我觉得友盟的页面找个东西太麻烦了。因为友盟的东西太多。所以我感觉在里面找个东西是很麻烦的。如果你遇到什么问题，去搜索问题基本上找很费劲。好了不吐槽了。</p>
-<p>我写这个的主要目的是第一次用友盟的微信登录，友盟都给你封装好了。每一步步应该怎么做。我主要是写文档记录为后期再次使用记录方便。</p>
-</blockquote>
-<p><table><br>    <tr><br>        <td>准备工作</td><br>    </tr><br></table></p>
-<p>####账号准备</p>
-<p>微信账号、友盟账号。以及申请的key。友盟下载的Dome</p>
-<p>####友盟集成工具</p>
-<p>首先这个工具很强，先跟你你的需求生成你需要的jar包。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483670-0aea4cfcdaa1365b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>最好将几个文件全部导入你的项目。</p>
-<p>libs主要放你的jar包。</p>
-<p>但是其他的文件主要是存放的微信分享的相关图片和布局<br><img src="http://upload-images.jianshu.io/upload_images/1483670-d24246aa6ea38dc8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>还能跟你需求生成相关的代码</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1483670-7e8de562dfd15add.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>目前application中的代码还不能自动生成，这个可能是友盟的问题</p>
-<p>###配置代码步骤</p>
- <pre><code>配置application的代码。</code></pre>
-
-<pre><code>{
-    //微信 appid appsecret
-    PlatformConfig.setWeixin(&quot;11111111111111&quot;, &quot;111111111111111&quot;);
-} 
-</code></pre>  <pre><code>配置ndroidMainfest的代码。</code></pre>
-
-<pre><code>{
-
- &lt;activity
-  android:name=&quot;.wxapi.WXEntryActivity&quot;
-  android:theme=&quot;@android:style/Theme.Translucent.NoTitleBar&quot;
-  android:configChanges=&quot;keyboardHidden|orientation|screenSize&quot;
-  android:exported=&quot;true&quot;
-  android:screenOrientation=&quot;portrait&quot; /&gt;
-
-      &lt;meta-data
-        android:name=&quot;UMENG_APPKEY&quot;
-        android:value=&quot;11111111111111&quot;&gt;
-      &lt;/meta-data&gt;
-}
-</code></pre><p><strong># 注意 #</strong>：</p>
-<p>1：在AndroidManifest.xml中下注册下面的回调Activity，<br>直接复制到Android manifest XML 即可。所以WXEntryActivity的时候。需要在项目中创建  <strong><em>wxapi</em></strong> 的包用于微信的回调。</p>
-<p>2：可以用友盟集成工具中会生成直接复制替换，不要忘记manifest中的将activity进行注册。</p>
-<p>3：新建登录页面</p>
-<p>####注册微信回调代码：<br>    {<br>    //友盟<br>    private UMAuthListener umAuthListener = new UMAuthListener() {<br>        @Override<br>        public void onStart(SHARE_MEDIA share_media) {<br>            Toast.makeText(getApplicationContext(), “onStart”, Toast.LENGTH_SHORT).show();<br>        }</p>
-<pre><code>    @Override
-    public void onComplete(SHARE_MEDIA platform, int action, Map&lt;String, String&gt; data) {
-        Toast.makeText(getApplicationContext(), &quot;授权成功&quot;, Toast.LENGTH_SHORT).show();
-        umShareAPI.getPlatformInfo(LoginActivity.this, platform, new UMAuthListener() {
-            @Override
-            public void onStart(SHARE_MEDIA share_media) {
-                Toast.makeText(getApplicationContext(), &quot;授权成功&quot;, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onComplete(SHARE_MEDIA share_media, int i, Map&lt;String, String&gt; map) {
-                Toast.makeText(getApplicationContext(), &quot;map&quot; + map, Toast.LENGTH_SHORT).show();
-                Log.e(&quot;----&quot;, &quot;map:&quot; + map);//登录信息以map的形式存储的。获取其中的信息应用到自己对应的APP进行登录。
-                StringBuilder sb = new StringBuilder();
-                Set&lt;String&gt; keys = map.keySet();
-                for (String key : keys) {
-                    sb.append(key + &quot;=&quot; + map.get(key).toString() + &quot;\r\n&quot;);
-                }
-                loginByWeChat(map.get(&quot;unionid&quot;).toString(), map.get(&quot;screen_name&quot;).toString(),
-                        map.get(&quot;iconurl&quot;).toString()
-
-                );
-            }
-
-            @Override
-            public void onError(SHARE_MEDIA share_media, int i, Throwable throwable) {
-
-            }
-
-            @Override
-            public void onCancel(SHARE_MEDIA share_media, int i) {
-
-            }
-        });
-    }
-
-
-    @Override
-    public void onError(SHARE_MEDIA platform, int action, Throwable t) {
-        Toast.makeText(getApplicationContext(), &quot;授权失败&quot; + action + &quot;=--&quot; + platform + &quot;--==&quot; + t, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onCancel(SHARE_MEDIA platform, int action) {
-        Toast.makeText(getApplicationContext(), &quot;取消授权&quot;, Toast.LENGTH_SHORT).show();
-    }
-
-};
-}
-</code></pre><p>##遇到的问题<br>1：如果遇到授权失败</p>
-<p>这里可以打印onError方法中的Trouble。</p>
-<h2 id="一般出现的错误方式是微信的错误。可以去微信的开放平台搜索问题。"><a href="#一般出现的错误方式是微信的错误。可以去微信的开放平台搜索问题。" class="headerlink" title="一般出现的错误方式是微信的错误。可以去微信的开放平台搜索问题。"></a>一般出现的错误方式是微信的错误。可以去微信的开放平台搜索问题。</h2><p>下面举个例子：</p>
-<pre><code>{
- ------tjava.lang.Throwable: 错误码：2002 
-错误信息：授权失败----invalid appsecret, view more at http://t.cn/RAEkdVq, hints: [ req_id: wK.pQA0170th34 ]
-
-}
-</code></pre><p><a href="http://t.cn/RAEkdVq" target="_blank" rel="external">点击进去查问题</a> 本页面跳转到腾讯的问题页面错误码：2002 </p>
-
-
-<p>1986. What a great season.</p>
-<p><td>将AndroidMainfest配置生成的代码</td><br> <td>将AndroidMainfest配置生成的代码</td></p>
-<tr>
-
-
-<p>将application配置生成的代码</p>
-<p>##准备工作</p>
-<p>你好</p>
-<hr>
-</tr>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/26/444/" data-id="cj5klcptg0000dsha156gv5wm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/26/who/" data-id="cj5klsrmd00016chaqfglned1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -280,7 +132,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/20/hello-world/" data-id="cj5klcptn0001dshay2xxcvpx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/20/hello-world/" data-id="cj5klsrm600006cha2lh211a6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -321,10 +173,6 @@
         
           <li>
             <a href="/2017/07/26/who/">who</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/26/444/">友盟授权微信登录</a>
           </li>
         
           <li>
