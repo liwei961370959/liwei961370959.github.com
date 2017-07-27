@@ -95,13 +95,13 @@
 
 <meta property="og:type" content="article">
 <meta property="og:title" content="友盟授权微信登录">
-<meta property="og:url" content="http://yoursite.com/2017/07/26/444/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/07/26/友盟第三方微信登录/index.html">
 <meta property="og:site_name" content="叫我李小白">
 <meta property="og:image" content="http://g.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=eb6097a02a34349b74536683f9da39f6/2f738bd4b31c87016fc6c45c257f9e2f0708ff1c.jpg">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483670-0aea4cfcdaa1365b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483670-d24246aa6ea38dc8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483670-7e8de562dfd15add.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-07-26T07:02:49.859Z">
+<meta property="og:updated_time" content="2017-07-27T02:39:37.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="友盟授权微信登录">
 <meta name="twitter:image" content="http://g.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=eb6097a02a34349b74536683f9da39f6/2f738bd4b31c87016fc6c45c257f9e2f0708ff1c.jpg">
@@ -132,7 +132,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/26/444/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/26/友盟第三方微信登录/"/>
 
 
 
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -214,7 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -257,7 +257,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/26/444/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/26/友盟第三方微信登录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -284,7 +284,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-26T14:07:52+08:00">
                 2017-07-26
@@ -340,13 +340,14 @@
 <p><img src="http://upload-images.jianshu.io/upload_images/1483670-7e8de562dfd15add.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>目前application中的代码还不能自动生成，这个可能是友盟的问题</p>
 <h3 id="配置代码步骤"><a href="#配置代码步骤" class="headerlink" title="配置代码步骤"></a>配置代码步骤</h3><p>···</p>
-<p>配置application的代码。</p>
+<p>配置application的代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">private void registToWX() &#123;</div><div class="line">     api = WXAPIFactory.createWXAPI(this, APP_ID, true);</div><div class="line">     api.registerApp(APP_ID);</div><div class="line"></div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
 <pre><code>{
     //微信 appid appsecret
     PlatformConfig.setWeixin(&quot;11111111111111&quot;, &quot;111111111111111&quot;);
+
 } 
 </code></pre><p>···</p>
-<p>配置ndroidMainfest的代码。</p>
+<p>配置ndroidMainfest的代码。并添加权限</p>
 <pre><code>{
 
  &lt;activity
@@ -361,7 +362,8 @@
         android:value=&quot;11111111111111&quot;&gt;
       &lt;/meta-data&gt;
 }
-</code></pre><p><strong># 注意 #</strong>：</p>
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;</div><div class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot; /&gt;</div><div class="line">&lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot; /&gt;</div><div class="line">&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;</div><div class="line">&lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot;/&gt;</div><div class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;</div><div class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot; /&gt;</div><div class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_COARSE_LOCATION&quot; /&gt;</div><div class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_LOCATION_EXTRA_COMMANDS&quot; /&gt;</div></pre></td></tr></table></figure>
+<p><strong># 注意 #</strong>：</p>
 <p>1：在AndroidManifest.xml中下注册下面的回调Activity，<br>直接复制到Android manifest XML 即可。所以WXEntryActivity的时候。需要在项目中创建  <strong><em>wxapi</em></strong> 的包用于微信的回调。</p>
 <p>2：可以用友盟集成工具中会生成直接复制替换，不要忘记manifest中的将activity进行注册。</p>
 <p>3：新建登录页面</p>
@@ -422,26 +424,19 @@ private UMAuthListener umAuthListener = new UMAuthListener() {
 
 };
 }
-</code></pre><h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>1：如果遇到授权失败</p>
-<p>这里可以打印onError方法中的Trouble。</p>
+</code></pre><h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="1：如果你按操作步骤一步步弄的。接口回调的时候不走任何办法"><a href="#1：如果你按操作步骤一步步弄的。接口回调的时候不走任何办法" class="headerlink" title="1：如果你按操作步骤一步步弄的。接口回调的时候不走任何办法"></a>1：如果你按操作步骤一步步弄的。接口回调的时候不走任何办法</h3><p>可能是你不细心的原因造成的。有的人。下载了微信的登录以及分享的Dome。然后主要的把<strong>.wxapi.WXEntryActivity</strong>复制的有问题。需要把控各个细节自卸检查下。</p>
+<h3 id="2：如果遇到授权失败"><a href="#2：如果遇到授权失败" class="headerlink" title="2：如果遇到授权失败"></a>2：如果遇到授权失败</h3><p>这里可以打印onError方法中的Trouble。</p>
 <h2 id="一般出现的错误方式是微信的错误。可以去微信的开放平台搜索问题。"><a href="#一般出现的错误方式是微信的错误。可以去微信的开放平台搜索问题。" class="headerlink" title="一般出现的错误方式是微信的错误。可以去微信的开放平台搜索问题。"></a>一般出现的错误方式是微信的错误。可以去微信的开放平台搜索问题。</h2><p>下面举个例子：</p>
 <pre><code>{
  ------tjava.lang.Throwable: 错误码：2002 
 错误信息：授权失败----invalid appsecret, view more at http://t.cn/RAEkdVq, hints: [ req_id: wK.pQA0170th34 ]
 
 }
-</code></pre><p><a href="http://t.cn/RAEkdVq" target="_blank" rel="external">点击进去查问题</a> 本页面跳转到腾讯的问题页面错误码：2002 </p>
+</code></pre><p>遇到这种问题办法操作如下：</p><p><a href="http://t.cn/RAEkdVq" target="_blank" rel="external">点击进去查问题</a> 本页面跳转到腾讯的问题页面错误码：2002 </p><p></p>
+<h3 id="3：遇到授权登录只是最初授权的问题"><a href="#3：遇到授权登录只是最初授权的问题" class="headerlink" title="3：遇到授权登录只是最初授权的问题"></a>3：遇到授权登录只是最初授权的问题</h3><p>安卓6.0之后为了保证用户的隐私性。增加了很多东西。代码介绍如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//每次先执行删除授权api，然后再调用授权api(要不6.0以上只能第一次进入授权页面。再次授权无法进入到授权页面)</div><div class="line">umShareAPI.deleteOauth(this, SHARE_MEDIA.WEIXIN, null);</div><div class="line">umShareAPI.doOauthVerify(this, platform, umAuthListener);</div></pre></td></tr></table></figure>
+<p>2017. 7. 27增加内容，以后会不间断的增加。</p>
 
-
-<p>1986. What a great season.</p>
-<p><td>将AndroidMainfest配置生成的代码</td><br> <td>将AndroidMainfest配置生成的代码</td></p>
-<tr>
-
-
-<p>将application配置生成的代码</p>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>你好</p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xcfgfgxfgxcf</div></pre></td></tr></table></figure></tr>
       
     </div>
 
@@ -535,10 +530,10 @@ private UMAuthListener umAuthListener = new UMAuthListener() {
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -559,7 +554,7 @@ private UMAuthListener umAuthListener = new UMAuthListener() {
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -597,7 +592,7 @@ private UMAuthListener umAuthListener = new UMAuthListener() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#账号准备"><span class="nav-number">1.</span> <span class="nav-text">账号准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#友盟集成工具"><span class="nav-number">2.</span> <span class="nav-text">友盟集成工具</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置代码步骤"><span class="nav-number"></span> <span class="nav-text">配置代码步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注册微信回调代码："><span class="nav-number">1.</span> <span class="nav-text">注册微信回调代码：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题"><span class="nav-number"></span> <span class="nav-text">遇到的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一般出现的错误方式是微信的错误。可以去微信的开放平台搜索问题。"><span class="nav-number"></span> <span class="nav-text">一般出现的错误方式是微信的错误。可以去微信的开放平台搜索问题。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number"></span> <span class="nav-text">准备工作</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#账号准备"><span class="nav-number">1.</span> <span class="nav-text">账号准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#友盟集成工具"><span class="nav-number">2.</span> <span class="nav-text">友盟集成工具</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置代码步骤"><span class="nav-number"></span> <span class="nav-text">配置代码步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注册微信回调代码："><span class="nav-number">1.</span> <span class="nav-text">注册微信回调代码：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题"><span class="nav-number"></span> <span class="nav-text">遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1：如果你按操作步骤一步步弄的。接口回调的时候不走任何办法"><span class="nav-number"></span> <span class="nav-text">1：如果你按操作步骤一步步弄的。接口回调的时候不走任何办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2：如果遇到授权失败"><span class="nav-number"></span> <span class="nav-text">2：如果遇到授权失败</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一般出现的错误方式是微信的错误。可以去微信的开放平台搜索问题。"><span class="nav-number"></span> <span class="nav-text">一般出现的错误方式是微信的错误。可以去微信的开放平台搜索问题。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3：遇到授权登录只是最初授权的问题"><span class="nav-number"></span> <span class="nav-text">3：遇到授权登录只是最初授权的问题</span></a></div>
             
 
           </div>
@@ -629,7 +624,7 @@ private UMAuthListener umAuthListener = new UMAuthListener() {
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
