@@ -10,6 +10,7 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
 
 
 
@@ -74,7 +75,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -86,7 +87,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
 
 
 
@@ -101,7 +102,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483670-0aea4cfcdaa1365b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483670-d24246aa6ea38dc8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1483670-7e8de562dfd15add.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-07-27T04:03:16.792Z">
+<meta property="og:updated_time" content="2017-08-10T10:07:06.577Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="友盟授权微信登录">
 <meta name="twitter:image" content="http://g.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=eb6097a02a34349b74536683f9da39f6/2f738bd4b31c87016fc6c45c257f9e2f0708ff1c.jpg">
@@ -113,8 +114,9 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
+    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -140,12 +142,6 @@
 
   <title>友盟授权微信登录 | 叫我李小白</title>
   
-
-
-
-
-
-
 
 
 
@@ -204,7 +200,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -214,7 +210,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -256,7 +252,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/26/友盟第三方微信登录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -284,7 +284,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-26T14:07:52+08:00">
                 2017-07-26
@@ -319,6 +319,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -327,7 +330,7 @@
       
         <p><img src="http://g.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=eb6097a02a34349b74536683f9da39f6/2f738bd4b31c87016fc6c45c257f9e2f0708ff1c.jpg" alt="头像再此"></p>
 <blockquote>
-<p>我觉得友盟的页面找个东西太麻烦了。因为友盟的东西太多。所以我感觉在里面找个东西是很麻烦的。如果你遇到什么问题，去搜索问题基本上找很费劲。好了不吐槽了。</p>
+<p>我觉得友盟的页面找个东西太麻烦了。因为友盟的东西太多。所以我感觉在里面找个东西是很麻烦的<br>。如果你遇到什么问题，去搜索问题基本上找很费劲。好了不吐槽了。</p>
 <p>我写这个的主要目的是第一次用友盟的微信登录，友盟都给你封装好了。每一步步应该怎么做。我主要是写文档记录为后期再次使用记录方便。</p>
 </blockquote>
 <a id="more"></a>
@@ -439,27 +442,15 @@ private UMAuthListener umAuthListener = new UMAuthListener() {
 
       
     </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -493,6 +484,10 @@ private UMAuthListener umAuthListener = new UMAuthListener() {
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -534,10 +529,10 @@ private UMAuthListener umAuthListener = new UMAuthListener() {
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -558,7 +553,7 @@ private UMAuthListener umAuthListener = new UMAuthListener() {
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -628,7 +623,7 @@ private UMAuthListener umAuthListener = new UMAuthListener() {
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
@@ -640,6 +635,12 @@ private UMAuthListener umAuthListener = new UMAuthListener() {
 
 
         
+
+
+
+
+
+
 
         
       </div>
@@ -705,25 +706,25 @@ private UMAuthListener umAuthListener = new UMAuthListener() {
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
 
 
 
   
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
 
 
 
